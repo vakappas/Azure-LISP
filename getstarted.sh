@@ -1,5 +1,5 @@
 # Deploy lab
-url=https://raw.githubusercontent.com/Microsoft/Azure-LISP/master/lisp_lab_iterate_through_vnet.json?token=ACh2r3wGMi9JHiYuCnCz9JjyG0I0Ejszks5cQeFzwA%3D%3D
+url=https://raw.githubusercontent.com/Microsoft/Azure-LISP/master/lisp_lab_iterate_through_vnet.json
 
 rg=lisplab
 az group create -n $rg -l eastus
