@@ -25,9 +25,9 @@
                         "vnetPrefix": "10.100.0.0/16",
                         "TestSubnet": "10.100.0.0/24",
                         "Outside": "10.100.200.0/24",
-						"Inside": "10.100.100.0/24",
+			"Inside": "10.100.100.0/24",
                         "vmName": "onprem-vm",
-						"vm2Name": "LISP-TestVM",
+			"vm2Name": "LISP-TestVM",
                         "nvaName": "onprem-pxtr"
                     },
                     {
@@ -35,7 +35,7 @@
                         "vnetPrefix": "10.100.0.0/16",
                         "Outside": "10.100.210.0/24",
                         "Inside": "10.100.101.0/24",
-						"Extended": "10.100.100.0/24", 
+			"Extended": "10.100.100.0/24", 
                         "vmName": "azure-vm1",
                         "nvaName": "azure-pxtr1"
                     }
