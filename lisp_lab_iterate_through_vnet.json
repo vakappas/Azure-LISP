@@ -25,9 +25,9 @@
                         "vnetPrefix": "10.100.0.0/16",
                         "TestSubnet": "10.100.0.0/24",
                         "Outside": "10.100.200.0/24",
-			"Inside": "10.100.100.0/24",
-                        "vmName": "onprem-vm",
-			"vm2Name": "LISP-TestVM",
+			            "Inside": "10.100.100.0/24",
+                        "vm1Name": "onprem-vm",
+            			"vm2Name": "LISP-TestVM",
                         "nvaName": "onprem-pxtr"
                     },
                     {
@@ -35,7 +35,7 @@
                         "vnetPrefix": "10.100.0.0/16",
                         "Outside": "10.100.210.0/24",
                         "Inside": "10.100.101.0/24",
-			"Extended": "10.100.100.0/24", 
+			            "Extended": "10.100.100.0/24", 
                         "vmName": "azure-vm1",
                         "nvaName": "azure-pxtr1"
                     }
@@ -46,7 +46,7 @@
     "variables": {
         "networkApiVersion": "2018-08-01",
         "deploymentApiVersion": "2017-05-10",
-        "nvaTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'nvaCSR1kv.json')]",
+        "nvaTemplateUrl1": "[uri(deployment().properties.templateLink.uri, 'nvaCSR1kv.json')]",
         "nvaTemplateUrl2": "[uri(deployment().properties.templateLink.uri, 'nvaCSR1kv2.json')]"
     },
     "resources": [
@@ -58,25 +58,25 @@
 			"properties": {
 				"mode": "Incremental",
 				"templateLink": {
-					"uri": "[variables('nvaTemplateUrl')]",
+					"uri": "[variables('nvaTemplateUrl1')]",
 					"contentVersion": "1.0.0.0"
 				},
 				"parameters": {
                     "adminUsername": {"value": "[parameters('adminUsername')]"},
                     "adminPassword": {"value": "[parameters('adminPassword')]"},
                     "vnetPrefix": {"value": "[parameters('config')['vnets'][0]['vnetPrefix']]"},
-                    "vnetName": {"value": "[parameters('config')['vnets'][copyIndex(0)]['vnetName']]"},
+                    "vnetName": {"value": "[parameters('config')['vnets'][0]['vnetName']]"},
                     "subnet1Name": {"value": "Inside"},
                     "subnet1Prefix": {"value": "[parameters('config')['vnets'][0]['Inside']]"},
                     "subnet2Name": {"value": "Outside"},
                     "subnet2Prefix": {"value": "[parameters('config')['vnets'][0]['Outside']]"},
 					"subnet3Name": {"value": "TestSubnet"},
-                    "subnet3Prefix": {"value": "[parameters('config')['vnets'][copyIndex(0)]['TestSubnet']]"},
-                    "nvaName": {"value": "[parameters('config')['vnets'][copyIndex(0)]['nvaName']]"},
+                    "subnet3Prefix": {"value": "[parameters('config')['vnets'][0]['TestSubnet']]"},
+                    "nvaName": {"value": "[parameters('config')['vnets'][0]['nvaName']]"},
                     "nvaSize": {"value": "Standard_D2_v2"},
-					"vmName": {"value": "[parameters('config')['vnets'][copyIndex(0)]['vmName']]"},
-                    "vmSize": {"value": "Standard_B1s"},
-                    "vm2Name": {"value": "[parameters('config')['vnets'][copyIndex(0)]['vm2Name']]"},
+					"vm1Name": {"value": "[parameters('config')['vnets'][0]['vm1Name']]"},
+                    "vm1Size": {"value": "Standard_B1s"},
+                    "vm2Name": {"value": "[parameters('config')['vnets'][0]['vm2Name']]"},
                     "vm2Size": {"value": "Standard_B1s"}
                 }
             },
@@ -98,16 +98,16 @@
                     "adminUsername": {"value": "[parameters('adminUsername')]"},
                     "adminPassword": {"value": "[parameters('adminPassword')]"},
                     "vnetPrefix": {"value": "[parameters('config')['vnets'][1]['vnetPrefix']]"},
-                    "vnetName": {"value": "[parameters('config')['vnets'][copyIndex(0)]['vnetName']]"},
+                    "vnetName": {"value": "[parameters('config')['vnets'][1]['vnetName']]"},
                     "subnet1Name": {"value": "Inside"},
                     "subnet1Prefix": {"value": "[parameters('config')['vnets'][1]['Inside']]"},
                     "subnet2Name": {"value": "Outside"},
                     "subnet2Prefix": {"value": "[parameters('config')['vnets'][1]['Outside']]"},
 					"subnet3Name": {"value": "TestSubnet"},
-                    "subnet3Prefix": {"value": "[parameters('config')['vnets'][copyIndex(0)]['Extended']]"},
-                    "nvaName": {"value": "[parameters('config')['vnets'][copyIndex(0)]['nvaName']]"},
+                    "subnet3Prefix": {"value": "[parameters('config')['vnets'][1]['Extended']]"},
+                    "nvaName": {"value": "[parameters('config')['vnets'][1]['nvaName']]"},
                     "nvaSize": {"value": "Standard_D2_v2"},
-					"vmName": {"value": "[parameters('config')['vnets'][copyIndex(0)]['vmName']]"},
+					"vmName": {"value": "[parameters('config')['vnets'][1]['vmName']]"},
                     "vmSize": {"value": "Standard_B1s"}
                 }
             },
