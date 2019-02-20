@@ -69,7 +69,7 @@
                     "subnet2Prefix": {"value": "[parameters('config')['vnets'][0]['Outside']]"},
                     "nvaName": {"value": "[parameters('config')['vnets'][0]['nvaName']]"},
                     "nvaSize": {"value": "Standard_D2_v2"},
-					"vmName": {"value": "[parameters('config')['vnets'][0]['vm1Name']]"},
+					"vmName": {"value": "[parameters('config')['vnets'][0]['vmName']]"},
                     "vmSize": {"value": "Standard_B1s"}
                 }
             },
