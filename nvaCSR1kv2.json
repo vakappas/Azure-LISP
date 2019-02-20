@@ -129,7 +129,6 @@
         "vnetId": "[resourceId(resourceGroup().name, 'Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
         "subnet1Ref": "[concat(variables('vnetId'), '/subnets/', parameters('subnet1Name'))]",
         "subnet2Ref": "[concat(variables('vnetId'), '/subnets/', parameters('subnet2Name'))]",
-        "subnet3Ref": "[concat(variables('vnetId'), '/subnets/', parameters('subnet3Name'))]",
         "autoShutdownStatus": "Enabled",
         "autoShutdownTime": "19:00",
         "autoShutdownTimeZone": "Eastern Standard Time",
@@ -148,7 +147,7 @@
    },
     "resources": [
         {
-            "comments": "Create Vnet with three subnets",
+            "comments": "Create Vnet with two subnets",
             "type": "Microsoft.Network/virtualNetworks",
             "name": "[parameters('vnetName')]",
             "apiVersion": "[variables('networkApiVersion')]",
@@ -171,14 +170,8 @@
                         "properties": {
                             "addressPrefix": "[parameters('subnet2Prefix')]"
                         }
-                    },
-					{
-                        "name": "[parameters('subnet3Name')]",
-                        "properties": {
-                            "addressPrefix": "[parameters('subnet3Prefix')]"
-                        }
                     }
-                ]
+				]
             },
             "resources": [],
             "dependsOn": []
@@ -402,7 +395,7 @@
                         "name": "ipconfig1",
                         "properties": {
                             "subnet": {
-                                "id": "[variables('subnet3Ref')]"
+                                "id": "[variables('subnet2Ref')]"
                             },
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIpAddress": {
