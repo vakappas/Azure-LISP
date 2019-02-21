@@ -45,7 +45,11 @@
         "csr-lan-ip": {
             "type": "string",
             "defaultValue": "192.168.100.4"
-        },        
+        },
+        "csr-lan-ip-2": {
+            "type": "string",
+            "defaultValue": "192.168.100.4"
+        },         
         "vmName": {
             "type": "string",
             "defaultValue": "myVm"
@@ -258,6 +262,18 @@
                             "privateIPAddressVersion": "IPv4",
                             "privateIPAllocationMethod": "Static",
                             "privateIPAddress": "[parameters('csr-lan-ip')]"
+                        }
+                    },
+                    {
+                        "name": "ipconfig3",
+                        "properties": {
+                            "subnet": {
+                                "id": "[variables('subnet1Ref')]"
+                            },
+							"primary": false,
+                            "privateIPAddressVersion": "IPv4",
+                            "privateIPAllocationMethod": "Static",
+                            "privateIPAddress": "[parameters('csr-lan-ip-2')]"
                         }
                     }
                 ],

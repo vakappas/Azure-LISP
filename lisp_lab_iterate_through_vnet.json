@@ -85,7 +85,8 @@
                     "subnet2Prefix": {"value": "[parameters('config')['vnets'][0]['Outside']]"},
                     "nvaName": {"value": "[parameters('config')['vnets'][0]['nvaName']]"},
                     "nvaSize": {"value": "Standard_D2_v2"},
-                    "csr-lan-ip": {"value": "[parameters('onpremcsr-lan-ip')]"},                    
+                    "csr-lan-ip": {"value": "[parameters('onpremcsr-lan-ip')]"},
+                    "csr-lan-ip-2": {"value": "[parameters('azurevm-lan-ip')]"},                  
 					"vmName": {"value": "[parameters('config')['vnets'][0]['vmName']]"},
                     "vmSize": {"value": "Standard_B1s"},
                     "vm-lan-ip": {"value": "[parameters('onpremvm-lan-ip')]"}
@@ -116,7 +117,8 @@
                     "subnet2Prefix": {"value": "[parameters('config')['vnets'][1]['Outside']]"},
                     "nvaName": {"value": "[parameters('config')['vnets'][1]['nvaName']]"},
                     "nvaSize": {"value": "Standard_D2_v2"},
-                    "csr-lan-ip": {"value": "[parameters('azurecsr-lan-ip')]"}, 
+                    "csr-lan-ip": {"value": "[parameters('azurecsr-lan-ip')]"},
+                    "csr-lan-ip-2": {"value": "[parameters('onpremvm-lan-ip')]"}, 
 					"vmName": {"value": "[parameters('config')['vnets'][1]['vmName']]"},
                     "vmSize": {"value": "Standard_B1s"},
                     "vm-lan-ip": {"value": "[parameters('azurevm-lan-ip')]"} 
