@@ -119,7 +119,7 @@
                     "csr-lan-ip": {"value": "[parameters('azurecsr-lan-ip')]"}, 
 					"vmName": {"value": "[parameters('config')['vnets'][1]['vmName']]"},
                     "vmSize": {"value": "Standard_B1s"},
-                    "vm-lan-ip": {"value": "[parameters('azurecsr-lan-ip')]"} 
+                    "vm-lan-ip": {"value": "[parameters('azurevm-lan-ip')]"} 
                 }
             },
             "dependsOn": [
