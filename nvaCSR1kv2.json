@@ -194,7 +194,7 @@
             },
             "resources": [],
             "dependsOn": [
-                "[concat('Microsoft.Network/routeTables/', parameters('routetablename'))]",
+                "[concat('Microsoft.Network/routeTables/', parameters('routetablename'), '-rt')]",
                 "[concat('Microsoft.Network/networkSecurityGroups/', variables('nvaNsgName'))]",
                 "[concat('Microsoft.Network/networkSecurityGroups/', variables('vmNsgName'))]"
             ]

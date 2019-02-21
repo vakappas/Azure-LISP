@@ -1,7 +1,7 @@
 # Deploy lab
 url=https://raw.githubusercontent.com/vakappas/Azure-LISP/two-subnets/lisp_lab_iterate_through_vnet.json
 
-rg=lisp-lab
+rg=lisp-lab-dev
 az group create -n $rg -l westeurope
 az group deployment create -g $rg --template-uri $url --parameters '{"adminPassword":{"value":"P@ssw0rd@2019"}}'
 
