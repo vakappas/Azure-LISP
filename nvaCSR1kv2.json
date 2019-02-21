@@ -269,7 +269,7 @@
                             "subnet": {
                                 "id": "[variables('subnet1Ref')]"
                             },
-							"primary": false,
+							"primary": true,
                             "privateIPAddressVersion": "IPv4",
                             "privateIPAllocationMethod": "Static",
                             "privateIPAddress": "[parameters('csr-lan-ip')]"
