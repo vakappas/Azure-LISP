@@ -404,7 +404,7 @@
                         "name": "ipconfig1",
                         "properties": {
                             "subnet": {
-                                "id": "[variables('subnet2Ref')]"
+                                "id": "[variables('subnet1Ref')]"
                             },
                             "privateIPAllocationMethod": "Static",
                             "privateIPAddress": "[parameters('vm-lan-ip')]",
