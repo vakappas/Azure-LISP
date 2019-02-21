@@ -34,6 +34,10 @@
             "defaultValue": "192.168.100.64/26",
             "type": "string"
         },
+        "routetablename":{
+            "type": "string",
+            "defaultValue": "Subnet2-RT"
+        },
         "nvaName": {
             "type": "string",
             "defaultValue": "myCsr"
@@ -175,7 +179,10 @@
                         "name": "[parameters('subnet1Name')]",
                         "properties": {
                             "addressPrefix": "[parameters('subnet1Prefix')]"
-                        }
+                            },
+                            "routeTable": {
+                            "id": "[resourceId('Microsoft.Network/routeTables', parameters('routetablename'))]"            
+                          }
                     },
                     {
                         "name": "[parameters('subnet2Name')]",
@@ -186,7 +193,11 @@
 				]
             },
             "resources": [],
-            "dependsOn": []
+            "dependsOn": [
+                "[concat('Microsoft.Network/routeTables/', parameters('routetablename'))]",
+                "[concat('Microsoft.Network/networkSecurityGroups/', variables('nvaNsgName'))]",
+                "[concat('Microsoft.Network/networkSecurityGroups/', variables('vmNsgName'))]"
+            ]
         },
         {
             "comments": "Storage Account for diagnostics",
@@ -561,6 +572,25 @@
 			"dependsOn": [
 				"[parameters('vmName')]"
 			]
+        },
+        {
+            "comments": "Route Table that has to be assigned to Inside subnet",
+            "type": "Microsoft.Network/routeTables",      
+            "name": "[concat(parameters('routetablename'),'-rt')]",      
+            "apiVersion": "2018-08-01",      
+            "location": "[resourceGroup().location]",      
+            "properties": {      
+              "routes": [      
+                {      
+                  "name": "[parameters('routetablename')]",      
+                  "properties": {      
+                    "addressPrefix": "[concat(parameters('vm-lan-ip'), '/32')]",      
+                    "nextHopType": "VirtualAppliance",      
+                    "nextHopIpAddress": "[parameters('csr-lan-ip')]"      
+                  }     
+                }      
+              ]      
+            }   
         }
      ],
     "outputs": {
