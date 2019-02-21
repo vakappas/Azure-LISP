@@ -181,7 +181,7 @@
                             "addressPrefix": "[parameters('subnet1Prefix')]"
                             },
                             "routeTable": {
-                            "id": "[resourceId('Microsoft.Network/routeTables', parameters('routetablename'))]"            
+                            "id": "[resourceId('Microsoft.Network/routeTables', concat(parameters('routetablename'), '-rt')]"            
                           }
                     },
                     {
