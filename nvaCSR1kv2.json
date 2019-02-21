@@ -178,11 +178,11 @@
                     {
                         "name": "[parameters('subnet1Name')]",
                         "properties": {
-                            "addressPrefix": "[parameters('subnet1Prefix')]"
-                            },
+                            "addressPrefix": "[parameters('subnet1Prefix')]",
                             "routeTable": {
-                            "id": "[resourceId('Microsoft.Network/routeTables', concat(parameters('routetablename'), '-rt'))]"            
+                                "id": "[resourceId('Microsoft.Network/routeTables', concat(parameters('routetablename'), '-rt'))]"            
                           }
+                        }
                     },
                     {
                         "name": "[parameters('subnet2Name')]",
