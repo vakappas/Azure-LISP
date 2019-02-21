@@ -42,6 +42,10 @@
             "type": "string",
             "defaultValue": "Standard_D2_v2"
         },
+        "csr-lan-ip": {
+            "type": "string",
+            "defaultValue": "192.168.100.4"
+        },        
         "vmName": {
             "type": "string",
             "defaultValue": "myVm"
@@ -49,6 +53,10 @@
         "vmSize": {
             "type": "string",
             "defaultValue": "Standard_B1s"
+        },
+        "vm-lan-ip": {
+            "type": "string",
+            "defaultValue": "192.168.100.11"
         },
         "adminUsername": {
             "type": "string",
@@ -141,7 +149,7 @@
         "diagnosticsStorageAccountType": "Standard_LRS",
         "diagnosticsStorageAccountKind": "Storage",
 		"customScript": "ubuntuConfig.bash",
-		"thisTemplateUri": "[deployment().properties.templateLink.uri]",
+        "thisTemplateUri": "[deployment().properties.templateLink.uri]",
         "customScriptUri": "[uri(variables('thisTemplateUri'), variables('customScript'))]",
         "customScriptCmd": "[concat('chmod 666 ', variables('customScript'), ' && /bin/sh ./', variables('customScript'))]"
    },
@@ -248,7 +256,8 @@
                             },
 							"primary": false,
                             "privateIPAddressVersion": "IPv4",
-                            "privateIPAllocationMethod": "Dynamic"
+                            "privateIPAllocationMethod": "Static",
+                            "privateIPAddress": "[parameters('csr-lan-ip')]"
                         }
                     }
                 ],
@@ -397,7 +406,8 @@
                             "subnet": {
                                 "id": "[variables('subnet2Ref')]"
                             },
-                            "privateIPAllocationMethod": "Dynamic",
+                            "privateIPAllocationMethod": "Static",
+                            "privateIPAddress": "[parameters('vm-lan-ip')]",
                             "publicIpAddress": {
                                 "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', variables('vmPipName'))]"
                             }
